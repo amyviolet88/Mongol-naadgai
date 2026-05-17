@@ -1,4 +1,3 @@
-style css
 :root {
   --blue: #0057b8;
   --sky: #8ed6ff;
@@ -20,60 +19,73 @@ body {
   line-height: 1.6;
 }
 
+/* ==========================================================================
+   ХӨХ ТОЛГОЙ (HEADER) БҮТЭЦ БОЛОН ҮНДЭСНИЙ ХЭЭНИЙ ТОХИРГОО
+   ========================================================================== */
 header {
-    content: "";
-    position: absolute;
-    /* 🔴 Хээг зөвхөн хөх header-ийн яг төвд нь байрлуулах тохиргоо */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    /* 🔴 Хөх толгойн өндөрт тааруулж хэмжээг тохируулав */
-    width: 280px; 
-    height: 70px; 
-    
-    /* 🔴 Таны татсан өлзий хээний зураг */
-    background-image: url('ulzii-khee.png'); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-    /* 🔴 Шар биш цэнхэрээр уусгах гол тохиргоо */
-    opacity: 0.15;             /* Маш даруухан бүдэг харагдуулна */
-    mix-blend-mode: overlay;   /* Цэнхэр фонтой зөөлөн уусгаж өгнө */
-    pointer-events: none;      /* Хээг хулганаар дарахгүй болгоно */
-    z-index: 1;                /* Текст, логоны ард байрлахыг баталгаажуулна */
+  background: linear-gradient(135deg, var(--blue), #003b73);
+  color: white;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 7px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  /* 🔴 Хээг дотор нь багтааж, хажуу тийш илүү гаргахгүй байх тохиргоо */
+  overflow: hidden; 
 }
 
-/* 🔴 Хөх толгой доторх лого, цэс, товчлуурууд хээнийхээ ДЭЭР ЦЭВЭРХЭН харагдах тохиргоо */
-.logo, nav, .lang, .access {
-    position: relative;
-    z-index: 2;
-}
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* 🔴 1. ХЭЭНҮҮДИЙН ФАЙЛЫН ЗУРГУУД (Цэвэрхэн нэршилтэй) */
+  background-image: 
+    url('alhan-khee.png'),        /* 1. Алхан хээ (Дээд хүрээ дагуу тууз шиг) */
+    url('cloud-pattern.png'),     /* 2. Үүлэн хээ (Арын дэвсгэр хэсэгт) */
+    url('ulzii-khee.png.png');    /* 3. Өлзий хээ (Төв хэсэгт 3 ширхэг цуварна) */
+  
+  /* 🔴 2. ХЭЭ БҮРИЙН БАЙРШИЛ */
+  background-position: 
+    top center,                    /* Алхан хээ: Дээд ирмэгт */
+    left center,                   /* Үүлэн хээ: Зүүн талд */
+    center center;                 /* Өлзий хээ: Яг төв голд нь */
+  
+  /* 🔴 3. ХЭЭ БҮРИЙН ХЭМЖЭЭ */
+  background-size: 
+    auto 12px,                     /* Алхан хээ: Өндөр нь 12px (Нарийн тууз) */
+    contain,                       /* Үүлэн хээ: Өөрийн хэмжээгээр */
+    300px 60px;                    /* Өлзий хээ: 3 ширхэг цуврах нийт хэмжээ */
+  
+  /* 🔴 4. ХЭЭНҮҮДИЙН ДАВТАГДАХ ХЭЛБЭР */
+  background-repeat: 
+    repeat-x,                      /* Алхан хээ: Хэвтээ тэнхлэг дагуу тууз шиг үргэлжилнэ */
+    no-repeat,                     /* Үүлэн хээ: Давтагдахгүй */
+    repeat-x;                      /* Өлзий хээ: Голдоо 3 ширхэг цуварна */
+
+  /* 🔴 Хөх дэвсгэртэй зөөлөн уусгах тохиргоо */
+  opacity: 0.18;             /* Хээг маш даруухан бүдэг харагдуулна */
+  mix-blend-mode: overlay;   /* Цэнхэр фонтой уусгаж өгнө */
+  pointer-events: none;      /* Хулганаар дарагдахгүй */
+  z-index: 1;
 }
 
-.cloud-pattern-left::before {
-    margin-right: 12px;
+/* 🔴 Хөх толгой доторх элементүүд хээнийхээ ДЭЭР ЦЭВЭРХЭН харагдах тохиргоо */
+.logo, nav, .lang, .access, nav a, .lang button, .access button {
+  position: relative;
+  z-index: 2;
 }
 
-.cloud-pattern-right::after {
-    margin-left: 12px;
-    transform: scaleX(-1); /* Баруун талын үүлэн хээг эргүүлж харуулах */
-}
-
-/* 🔴 Хөх хэсгийн доод ирмэгээр гүйх нарийн алхан хээ */
-.alhan-border-top {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10px; /* Алхан хээний өндөр */
-    background-image: url('alhan-khee.png'); /* 🔴 Таны татсан алхан хээний урт тууз зураг */
-    background-repeat: repeat-x; /* Хээг баруун тийш тасралтгүй давтана */
-    background-size: auto 100%;
-    opacity: 0.25; /* Даруухан харагдуулах үүднээс бүдгэрүүлсэн */
-}
-
+/* ==========================================================================
+   БУСАД СТИЛЬ ХЭСГҮҮД (Хэвээр үлдсэн)
+   ========================================================================== */
 .logo { font-size: 24px; font-weight: 900; }
 
 nav a {
@@ -203,4 +215,3 @@ h2 { color: #003b73; border-left: 9px solid var(--gold); padding-left: 12px; }
 .contrast .card, .contrast .panel { background: #222; border-color: white; color: white; }
 
 footer { background: #003b73; color: white; text-align: center; padding: 25px; }
-
