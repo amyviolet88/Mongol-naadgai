@@ -21,34 +21,35 @@ body {
 }
 
 header {
- background: linear-gradient(135deg, var(--blue), #003b73);
-  color: white;
-  padding: 18px 28px 25px 28px; /* 🔴 Хээ багтах зай гаргаж доод талын padding-ийг ихэсгэсэн */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 7px solid var(--gold);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  /* 🔴 Хөх дэвсгэр дээр маш бүдэг тойрог уусгалт нэмж хээг илүү гоё харагдуулна */
-  background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 80%), 
-                    linear-gradient(135deg, var(--blue), #003b73);
-}
-
-/* 🔴 "Нүүдэлчин Наадамчид" бичвэрийн хоёр талд үүлэн хээ оруулах хэсэг */
-.cloud-pattern-left::before, 
-.cloud-pattern-right::after {
     content: "";
-    display: inline-block;
-    width: 35px;  /* Хээний өргөн */
-    height: 20px; /* Хээний өндөр */
-    background-image: url('cloud-pattern.png'); /* 🔴 Таны татсан үүлэн хээний зураг */
+    position: absolute;
+    /* 🔴 Хээг зөвхөн хөх header-ийн яг төвд нь байрлуулах тохиргоо */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* 🔴 Хөх толгойн өндөрт тааруулж хэмжээг тохируулав */
+    width: 280px; 
+    height: 70px; 
+    
+    /* 🔴 Таны татсан өлзий хээний зураг */
+    background-image: url('ulzii-khee.png'); 
     background-size: contain;
     background-repeat: no-repeat;
-    vertical-align: middle;
-    opacity: 0.8; /* Хэт тод биш харагдуулах бүдгэрүүлэлт */
+    background-position: center;
+    
+    /* 🔴 Шар биш цэнхэрээр уусгах гол тохиргоо */
+    opacity: 0.15;             /* Маш даруухан бүдэг харагдуулна */
+    mix-blend-mode: overlay;   /* Цэнхэр фонтой зөөлөн уусгаж өгнө */
+    pointer-events: none;      /* Хээг хулганаар дарахгүй болгоно */
+    z-index: 1;                /* Текст, логоны ард байрлахыг баталгаажуулна */
+}
+
+/* 🔴 Хөх толгой доторх лого, цэс, товчлуурууд хээнийхээ ДЭЭР ЦЭВЭРХЭН харагдах тохиргоо */
+.logo, nav, .lang, .access {
+    position: relative;
+    z-index: 2;
+}
 }
 
 .cloud-pattern-left::before {
