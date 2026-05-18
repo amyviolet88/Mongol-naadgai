@@ -19,73 +19,65 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================================================================
-   ХӨХ ТОЛГОЙ (HEADER) БҮТЭЦ БОЛОН ҮНДЭСНИЙ ХЭЭНИЙ ТОХИРГОО
-   ========================================================================== */
 header {
-  background: linear-gradient(135deg, var(--blue), #003b73);
-  color: white;
-  padding: 18px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 7px solid var(--gold);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  /* 🔴 Хээг дотор нь багтааж, хажуу тийш илүү гаргахгүй байх тохиргоо */
-  overflow: hidden; 
+    background: linear-gradient(135deg, var(--blue), #003b73);
+    color: white;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 7px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    overflow: hidden; 
 }
 
 header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* 🔴 1. ХЭЭНҮҮДИЙН ФАЙЛЫН ЗУРГУУД (Цэвэрхэн нэршилтэй) */
-  background-image: 
-    url('alhan-khee.png'),        /* 1. Алхан хээ (Дээд хүрээ дагуу тууз шиг) */
-    url('cloud-pattern.png'),     /* 2. Үүлэн хээ (Арын дэвсгэр хэсэгт) */
-    url('ulzii-khee.png.png');    /* 3. Өлзий хээ (Төв хэсэгт 3 ширхэг цуварна) */
-  
-  /* 🔴 2. ХЭЭ БҮРИЙН БАЙРШИЛ */
-  background-position: 
-    top center,                    /* Алхан хээ: Дээд ирмэгт */
-    left center,                   /* Үүлэн хээ: Зүүн талд */
-    center center;                 /* Өлзий хээ: Яг төв голд нь */
-  
-  /* 🔴 3. ХЭЭ БҮРИЙН ХЭМЖЭЭ */
-  background-size: 
-    auto 12px,                     /* Алхан хээ: Өндөр нь 12px (Нарийн тууз) */
-    contain,                       /* Үүлэн хээ: Өөрийн хэмжээгээр */
-    300px 60px;                    /* Өлзий хээ: 3 ширхэг цуврах нийт хэмжээ */
-  
-  /* 🔴 4. ХЭЭНҮҮДИЙН ДАВТАГДАХ ХЭЛБЭР */
-  background-repeat: 
-    repeat-x,                      /* Алхан хээ: Хэвтээ тэнхлэг дагуу тууз шиг үргэлжилнэ */
-    no-repeat,                     /* Үүлэн хээ: Давтагдахгүй */
-    repeat-x;                      /* Өлзий хээ: Голдоо 3 ширхэг цуварна */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 🔴 ХЭЭНҮҮДИЙГ ОРУУЛАХ */
+    background-image: 
+        url('alkhan-khee.png'),        /* 1. Алхан хээ */
+        url('cloud-pattern.png'),       /* 2. Үүлэн хээ */
+        url('ulzii-khee.png');          /* 3. Өлзий хээ */
+    
+    /* 🔴 ХЭЭНҮҮДИЙН БАЙРШИЛ */
+    background-position: 
+        top center,                    /* Алхан хээ: Дээд ирмэгт */
+        left center,                   /* Үүлэн хээ: Зүүн талд */
+        center center;                 /* Өлзий хээ: Яг голд нь */
+    
+    /* 🔴 ХЭЭНҮҮДИЙН ХЭМЖЭЭ */
+    background-size: 
+        auto 12px,                     /* Алхан хээ: Нарийн тууз (Өндөр 12px) */
+        contain,                       /* Үүлэн хээ: Багтах хэмжээгээр */
+        auto 45px;                     /* Өлзий хээ: Өндрийг нь header-тээ тааруулав */
+    
+    /* 🔴 ХЭЭНҮҮДИЙН ДАВТАГДАХ ХЭЛБЭР */
+    background-repeat: 
+        repeat-x,                      /* Алхан хээ: Хэвтээ чиглэлд тууз шиг үргэлжилнэ */
+        no-repeat,                     /* Үүлэн хээ: Давтагдахгүй */
+        repeat-x;                      /* Өлзий хээ: Хэвтээ чиглэлд цуварна */
 
-  /* 🔴 Хөх дэвсгэртэй зөөлөн уусгах тохиргоо */
-  opacity: 0.18;             /* Хээг маш даруухан бүдэг харагдуулна */
-  mix-blend-mode: overlay;   /* Цэнхэр фонтой уусгаж өгнө */
-  pointer-events: none;      /* Хулганаар дарагдахгүй */
-  z-index: 1;
+    opacity: 0.18;             
+    mix-blend-mode: overlay;   /* ⚠️ Хэрэв хээ харагдахгүй байвал үүнийг устгаарай */
+    pointer-events: none;      
+    z-index: 1;
 }
 
-/* 🔴 Хөх толгой доторх элементүүд хээнийхээ ДЭЭР ЦЭВЭРХЭН харагдах тохиргоо */
-.logo, nav, .lang, .access, nav a, .lang button, .access button {
-  position: relative;
-  z-index: 2;
+/* Лого, Цэс, Хэлний товчлуурууд хээнийхээ ДЭЭР тод харагдах тохиргоо */
+.logo, nav, .lang button, .access button {
+    position: relative;
+    z-index: 2;
 }
 
-/* ==========================================================================
-   БУСАД СТИЛЬ ХЭСГҮҮД (Хэвээр үлдсэн)
-   ========================================================================== */
 .logo { font-size: 24px; font-weight: 900; }
 
 nav a {
@@ -130,6 +122,7 @@ nav a {
   cursor: pointer;
   box-shadow: 0 6px 0 rgba(0,0,0,.22);
   margin: 6px;
+  transition: transform 0.1s, box-shadow 0.1s; /* Smooth даралт */
 }
 
 .btn:hover { transform: translateY(-2px); }
@@ -174,7 +167,13 @@ h2 { color: #003b73; border-left: 9px solid var(--gold); padding-left: 12px; }
   overflow: hidden;
 }
 
-.fill { height: 100%; width: 0%; background: var(--green); transition: .4s; }
+.fill { 
+  height: 100%; 
+  width: 0%; 
+  background: var(--green); 
+  transition: .4s; 
+  border-radius: inherit; /* Буланг дугуй хэвээр үлдээх үүднээс нэмэв */
+}
 
 .game-box {
   background: #fffdf3;
@@ -191,12 +190,13 @@ h2 { color: #003b73; border-left: 9px solid var(--gold); padding-left: 12px; }
   font-weight: bold; cursor: pointer;
 }
 
-.shagai-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.shagai-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 35px; }
 
 .shagai {
   width: 82px; height: 82px; display: flex; align-items: center; justify-content: center;
   font-size: 40px; background: white; border: 4px solid #fb8500;
   border-radius: 24px; cursor: pointer;
+  transition: transform 0.2s; /* Сонгоход зөөлөн томрох эффект */
 }
 
 .shagai.selected { background: #ffdd57; transform: scale(1.1); }
@@ -207,11 +207,31 @@ h2 { color: #003b73; border-left: 9px solid var(--gold); padding-left: 12px; }
   background: white; animation: pop .45s ease;
 }
 
+/* Буянзаяа шагайзураг засвар */
+.card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    border-radius: 14px;
+}
+
 @keyframes pop { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-/* Accessibility Modes */
-.large-text { font-size: 22px; }
+/* 🔴 Сайжруулсан Accessibility Modes */
+.large-text { 
+  font-size: 1.25rem; /* Энэ ангийг <body>-д өгвөл бүх бичвэр харьцангуй томорно */
+}
+.large-text h1 { font-size: 64px; } /* Томоор харах үед гарчгийг улам томруулах */
+
 .contrast { background: #111 !important; color: white !important; }
-.contrast .card, .contrast .panel { background: #222; border-color: white; color: white; }
+.contrast .card, 
+.contrast .panel, 
+.contrast .game-box { 
+  background: #222 !important; 
+  border-color: white !important; 
+  color: white !important; 
+}
+.contrast nav a { color: var(--gold); }
 
 footer { background: #003b73; color: white; text-align: center; padding: 25px; }
